@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+   .cs-btn {
+      @apply py-2.5 px-5 text-lg bg-blue-500 rounded-md hover:bg-blue-700 outline-none border-none;
+   }
+}
