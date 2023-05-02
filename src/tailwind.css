@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+   .cs-container {
+      @apply px-5 md:px-8 lg:px-12 xl:px-24;
+   }
    .cs-btn {
       @apply py-2.5 px-5 text-lg bg-blue-500 rounded-md hover:bg-blue-700 outline-none border-none;
    }
