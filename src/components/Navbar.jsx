@@ -105,7 +105,7 @@ const Navbar = () => {
                   </div>
                ) : (
                   <Link
-                     className="tooltip tooltip-left cs-nav-link"
+                     className="tooltip tooltip-left tooltip-warning cs-nav-link"
                      data-tip="Login"
                      to="/login"
                   >

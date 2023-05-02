@@ -3,7 +3,7 @@ import InputGroup from "../../components/InputGroup";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-   const [isAgree, setIsAgree] = useState(false);
+   const [isAgree, setIsAgree] = useState(true);
    const [user, setUser] = useState({
       name: "",
       email: "",
@@ -115,8 +115,9 @@ const Register = () => {
                </span>
             </div>
             <button
+               type="submit"
                disabled={isAgree}
-               className={`cs-btn w-full ${isAgree && ""}`}
+               className={`cs-btn w-full ${isAgree && "btn-disabled"}`}
             >
                Submit
             </button>
