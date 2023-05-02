@@ -7,7 +7,16 @@
    .cs-container {
       @apply px-5 md:px-8 lg:px-12 xl:px-24;
    }
+   .cs-nav-link {
+      @apply md:hover:text-yellow-cs hover:text-black text-white md:text-black;
+   }
+   .cs-title {
+      @apply text-4xl text-center font-bold font-kaushan;
+   }
+   .cs-title-border {
+      @apply border-b-2 border-yellow-cs px-4 pb-3.5 w-fit mx-auto;
+   }
    .cs-btn {
-      @apply py-2.5 px-5 text-lg bg-blue-500 rounded-md hover:bg-blue-700 outline-none border-none;
+      @apply py-3.5 px-5 text-xl text-white bg-yellow-cs rounded-md hover:bg-yellow-600 outline-none border-none;
    }
 }
