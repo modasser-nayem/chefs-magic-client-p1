@@ -1,6 +1,11 @@
 import React, { useContext, useState } from "react";
 import logo from "../assets/logo/chef.png";
-import { MdOutlineShoppingCart, MdOutlineLogin } from "react-icons/md";
+import {
+   MdOutlineShoppingCart,
+   MdOutlineLogin,
+   MdLogout,
+} from "react-icons/md";
+import { FaUser, FaUserEdit } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
@@ -27,7 +32,7 @@ const navLink = [
 
 const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
-   const { user } = useContext(authContext);
+   const { user, logoutUser, loading } = useContext(authContext);
    return (
       <div className="cs-container navbar bg-base-100 border-2 bg-opacity-0 h-[12vh]">
          <div className="flex-1">
@@ -36,7 +41,7 @@ const Navbar = () => {
                to="/"
             >
                <img
-                  className="h-16 pr-2"
+                  className="h-12 pr-2"
                   src={logo}
                   alt="brand logo"
                />
@@ -70,47 +75,62 @@ const Navbar = () => {
                   <MdOutlineShoppingCart className="cs-nav-link text-3xl" />
                   <span className="badge badge-sm indicator-item">8</span>
                </div>
-               {user ? (
-                  <div
-                     className="dropdown dropdown-end tooltip tooltip-left"
-                     data-tip="Ali Modasser Nayem"
-                  >
-                     <label
-                        tabIndex={0}
-                        className="btn btn-ghost btn-circle avatar"
-                     >
-                        <div className="w-12 rounded-full">
-                           <img
-                              className="bg-gray-500"
-                              src="https://avatars.githubusercontent.com/u/96650000?s=48&v=4"
-                           />
-                        </div>
-                     </label>
-                     <ul
-                        tabIndex={0}
-                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl bg-base-100 rounded-box w-52"
-                     >
-                        <li>
-                           <Link
-                              to="/profile"
-                              className="justify-between"
+               {!loading && (
+                  <>
+                     {user ? (
+                        <div
+                           className="dropdown dropdown-end tooltip tooltip-left"
+                           data-tip={user.displayName}
+                        >
+                           <label
+                              tabIndex={0}
+                              className="btn btn-ghost btn-circle avatar"
                            >
-                              Profile
-                           </Link>
-                        </li>
-                        <li>
-                           <p>Logout</p>
-                        </li>
-                     </ul>
-                  </div>
-               ) : (
-                  <Link
-                     className="tooltip tooltip-left tooltip-warning cs-nav-link"
-                     data-tip="Login"
-                     to="/login"
-                  >
-                     <MdOutlineLogin className="text-3xl" />
-                  </Link>
+                              <div className="w-12 rounded-full">
+                                 <img
+                                    className="bg-yellow-cs"
+                                    src={user.photoURL}
+                                 />
+                              </div>
+                           </label>
+                           <ul
+                              tabIndex={0}
+                              className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl bg-base-100 rounded-box w-52"
+                           >
+                              <li>
+                                 <Link
+                                    to="/profile"
+                                    className="text-lg"
+                                 >
+                                    <FaUser />
+                                    Profile
+                                 </Link>
+                              </li>
+                              <li>
+                                 <p className="text-lg">
+                                    <FaUserEdit /> Update
+                                 </p>
+                              </li>
+                              <li>
+                                 <p
+                                    className="text-lg"
+                                    onClick={() => logoutUser()}
+                                 >
+                                    <MdLogout /> Logout
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     ) : (
+                        <Link
+                           className="tooltip tooltip-left tooltip-warning cs-nav-link"
+                           data-tip="Login"
+                           to="/login"
+                        >
+                           <MdOutlineLogin className="text-3xl" />
+                        </Link>
+                     )}
+                  </>
                )}
             </div>
          </div>

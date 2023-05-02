@@ -43,7 +43,6 @@ const Register = () => {
       } else if (user.password.length < 6) {
          setUser({
             ...user,
-            passwordError: "",
             passwordError: "Password must be a 6 character",
          });
       } else if (user.photo_url === "") {

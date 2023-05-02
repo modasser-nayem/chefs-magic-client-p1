@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InputGroup from "../../components/InputGroup";
 import googleLogo from "../../assets/logo/google.png";
 import githubLogo from "../../assets/logo/github.png";
 import { Link } from "react-router-dom";
+import { authContext } from "../../provider/authProvider";
 
 const Login = () => {
    const [isAgree, setIsAgree] = useState(true);
+   const { loginWithGoogle, loginWithGithub } = useContext(authContext);
    const [user, setUser] = useState({
       email: "",
       password: "",
@@ -37,11 +39,23 @@ const Login = () => {
       }
    };
 
-   const loginWithGoogle = () => {
-      console.log("google");
+   const googleLogin = () => {
+      loginWithGoogle()
+         .then((result) => {
+            console.log(result);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
    };
-   const loginWithGithub = () => {
-      console.log("github");
+   const githubLogin = () => {
+      loginWithGithub()
+         .then((result) => {
+            console.log(result);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
    };
    return (
       <div className="p-8">
@@ -95,7 +109,7 @@ const Login = () => {
 
             <div className="mt-16">
                <div
-                  onClick={loginWithGoogle}
+                  onClick={googleLogin}
                   className="cs-login-btn"
                >
                   <img
@@ -106,7 +120,7 @@ const Login = () => {
                   Login With Google
                </div>
                <div
-                  onClick={loginWithGithub}
+                  onClick={githubLogin}
                   className="cs-login-btn mt-5"
                >
                   <img

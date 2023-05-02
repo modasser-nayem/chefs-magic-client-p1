@@ -17,7 +17,7 @@
       @apply border-b-2 border-yellow-cs px-4 pb-3.5 w-fit mx-auto;
    }
    .cs-login-btn {
-      @apply w-full flex gap-2 items-center justify-center py-5 px-5 text-xl font-medium outline-none border-none rounded-md bg-gray-100;
+      @apply w-full flex gap-2 items-center justify-center py-5 px-5 text-xl font-medium cursor-pointer outline-none border-none rounded-md bg-gray-100;
    }
    .cs-btn {
       @apply py-3.5 px-5 text-xl text-white bg-yellow-cs rounded-md hover:bg-yellow-600 outline-none border-none;
