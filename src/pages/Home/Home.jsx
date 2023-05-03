@@ -3,6 +3,7 @@ import { authContext } from "../../provider/authProvider";
 import Banner from "./Banner";
 import Services from "./Services";
 import SpecialDishes from "./SpecialDishes";
+import Chefs from "./Chefs";
 
 const Home = () => {
    // const data = useContext(authContext);
@@ -10,6 +11,7 @@ const Home = () => {
    return (
       <div className="">
          <Banner />
+         <Chefs />
          <Services />
          <SpecialDishes />
       </div>

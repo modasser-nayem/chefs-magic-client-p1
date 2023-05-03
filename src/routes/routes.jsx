@@ -7,6 +7,7 @@ import Register from "../pages/Registration/Register";
 import Login from "../pages/Registration/Login";
 import Blogs from "../pages/Blogs/Blogs";
 import PrivateRoute from "./PrivateRoute";
+import { server } from "../main";
 
 const router = createBrowserRouter([
    {
@@ -21,10 +22,7 @@ const router = createBrowserRouter([
          {
             path: "recipes/:id",
             element: <ChefRecipes />,
-            loader: ({ params }) =>
-               fetch(
-                  `https://chefsmagic-mdalimodassernayem-gmailcom.vercel.app/chefs/${params.id}`
-               ),
+            loader: ({ params }) => fetch(`${server}/chefs/${params.id}`),
          },
          {
             path: "register",

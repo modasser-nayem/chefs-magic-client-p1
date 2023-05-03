@@ -37,4 +37,19 @@
    .dish-img:hover .img-child {
       @apply block;
    }
+   .chef-cart-body p {
+      @apply text-xl pb-2 flex items-center gap-2;
+   }
+   .chef-cart-body p .cart-icon {
+      @apply text-2xl text-yellow-cs;
+   }
+   .cs-chef-details p {
+      @apply text-xl pb-2;
+   }
+   .cs-chef-details span {
+      @apply font-medium mr-1;
+   }
+   .cs-chef-social-icon p {
+      @apply text-2xl p-3 text-white bg-yellow-cs rounded-full;
+   }
 }
