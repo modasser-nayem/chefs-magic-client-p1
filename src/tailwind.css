@@ -11,7 +11,7 @@
       @apply md:hover:text-yellow-cs hover:text-black text-white md:text-black;
    }
    .cs-title {
-      @apply text-4xl text-center font-bold font-kaushan;
+      @apply text-5xl text-center font-bold font-kaushan;
    }
    .cs-title-border {
       @apply border-b-2 border-yellow-cs px-4 pb-3.5 w-fit mx-auto;
@@ -33,5 +33,8 @@
    }
    .cs-footer-title {
       @apply text-3xl font-medium font-Montserrat border-b border-gray-400 py-2 mb-5;
+   }
+   .dish-img:hover .img-child {
+      @apply block;
    }
 }

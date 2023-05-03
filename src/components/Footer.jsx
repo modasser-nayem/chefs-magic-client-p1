@@ -118,7 +118,7 @@ const Footer = () => {
          </div>
          <div className="bg-black p-8">
             <p className="text-center text-white">
-               Copyright © 2017 Aashi Restora, All Rights Reserved
+               Copyright © 2023 Chefs Magic, All Rights Reserved
             </p>
          </div>
       </div>
