@@ -2,17 +2,23 @@ import React, { useContext, useState } from "react";
 import InputGroup from "../../components/InputGroup";
 import googleLogo from "../../assets/logo/google.png";
 import githubLogo from "../../assets/logo/github.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../provider/authProvider";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+   const navigate = useNavigate();
+   const location = useLocation();
+   const fromRedirect = location.state?.from?.pathname || "/";
    const [isAgree, setIsAgree] = useState(true);
-   const { loginWithGoogle, loginWithGithub } = useContext(authContext);
+   const { loginWithGoogle, loginWithGithub, loginCreatedUser } =
+      useContext(authContext);
    const [user, setUser] = useState({
       email: "",
       password: "",
       emailError: "",
       passwordError: "",
+      success: "User Successfully Login",
    });
 
    const changeHandler = (e) => {
@@ -35,7 +41,15 @@ const Login = () => {
             passwordError: "Please provide a password",
          });
       } else {
-         console.log(user);
+         loginCreatedUser(user.email, user.password)
+            .then((loginUser) => {
+               console.log(loginUser);
+               toast.success(user.success);
+               navigate(fromRedirect);
+            })
+            .catch((error) => {
+               toast.error(error.code.slice(5));
+            });
       }
    };
 
@@ -43,6 +57,7 @@ const Login = () => {
       loginWithGoogle()
          .then((result) => {
             console.log(result);
+            toast.success(user.success);
          })
          .catch((error) => {
             console.log(error);
@@ -52,6 +67,7 @@ const Login = () => {
       loginWithGithub()
          .then((result) => {
             console.log(result);
+            toast.success(user.success);
          })
          .catch((error) => {
             console.log(error);

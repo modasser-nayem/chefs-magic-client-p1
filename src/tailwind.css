@@ -22,4 +22,16 @@
    .cs-btn {
       @apply py-3.5 px-5 text-xl text-white bg-yellow-cs rounded-md hover:bg-yellow-600 outline-none border-none;
    }
+   .cs-footer p {
+      @apply text-gray-300 font-Lato text-lg pt-5;
+   }
+   .cs-footer .icon-group {
+      @apply flex items-center gap-3;
+   }
+   .cs-footer .footer-icon {
+      @apply text-2xl p-3 text-white bg-yellow-cs rounded-full;
+   }
+   .cs-footer-title {
+      @apply text-3xl font-medium font-Montserrat border-b border-gray-400 py-2 mb-5;
+   }
 }

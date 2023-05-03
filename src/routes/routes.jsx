@@ -5,6 +5,8 @@ import Home from "../pages/Home/Home";
 import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
 import Register from "../pages/Registration/Register";
 import Login from "../pages/Registration/Login";
+import Blogs from "../pages/Blogs/Blogs";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
    {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
          {
             path: "login",
             element: <Login />,
+         },
+         {
+            path: "blog",
+            element: (
+               <PrivateRoute>
+                  <Blogs />
+               </PrivateRoute>
+            ),
          },
       ],
    },

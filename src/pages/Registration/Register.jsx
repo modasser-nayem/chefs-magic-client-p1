@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InputGroup from "../../components/InputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../../provider/authProvider";
 
 const Register = () => {
    const [isAgree, setIsAgree] = useState(true);
@@ -14,6 +15,9 @@ const Register = () => {
       passwordError: "",
       photo_urlError: "",
    });
+   const navigate = useNavigate();
+
+   const { createNewUser } = useContext(authContext);
 
    const changeHandler = (e) => {
       setUser({
@@ -52,7 +56,13 @@ const Register = () => {
             photo_urlError: "Please provide photo URL",
          });
       } else {
-         console.log(user);
+         createNewUser(
+            user.email,
+            user.password,
+            user.name,
+            user.photo_url,
+            navigate
+         );
       }
    };
    return (
