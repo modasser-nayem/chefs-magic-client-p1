@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# Chef's Magic ![product-logo](/public/chef.png)
+# Chef's Magic <img src="/public/chef.png" width="100" height="100" />
 
 ### Live Demo: [https://chefs-magic.web.app/](https://chefs-magic.web.app/)
 
