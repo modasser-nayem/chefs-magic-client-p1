@@ -9,7 +9,10 @@ const Home = () => {
    // const data = useContext(authContext);
    // console.log(data);
    return (
-      <div className="">
+      <div
+         id="home"
+         className=""
+      >
          <Banner />
          <Chefs />
          <Services />

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "./navActive.css";
 import logo from "../assets/logo/chef.png";
 import {
    MdOutlineShoppingCart,
@@ -6,10 +7,12 @@ import {
    MdLogout,
 } from "react-icons/md";
 import { FaUser, FaUserEdit } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { authContext } from "../provider/authProvider";
+import { NavHashLink } from "react-router-hash-link";
+import { useRef } from "react";
 
 const navLink = [
    {
@@ -17,24 +20,29 @@ const navLink = [
       name: "Home",
    },
    {
-      path: "/about",
-      name: "About Us",
+      path: "/#chefs",
+      name: "Chefs",
+   },
+   {
+      path: "/#dishes",
+      name: "Dishes",
+   },
+   {
+      path: "/#services",
+      name: "services",
    },
    {
       path: "/blog",
       name: "Blog",
-   },
-   {
-      path: "/contact",
-      name: "Contact",
    },
 ];
 
 const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
    const { user, logoutUser, loading } = useContext(authContext);
+   const [navActive, setNavActive] = useState(false);
    return (
-      <div className="cs-container navbar bg-base-100 border-2 bg-opacity-0 h-[12vh]">
+      <div className="cs-container  top-0 navbar bg-white border-2 h-[12.5vh]">
          <div className="flex-1">
             <Link
                className="flex items-center"
@@ -52,22 +60,25 @@ const Navbar = () => {
          </div>
          <div
             className={`bg-yellow-cs flex flex-col md:flex-row items-center absolute md:static md:z-auto z-10 w-full md:w-auto p-8 md:p-0 left-0 bg-opacity-0 right-0 transition-all md:transition-none duration-500 ${
-               isOpen ? "bg-opacity-100 md:bg-opacity-0 top-[12vh]" : "-top-96"
+               isOpen
+                  ? "bg-opacity-100 md:bg-opacity-0 top-[12vh]"
+                  : "-top-[700px]"
             }`}
          >
             <div className="text-lg font-medium font-Lato flex flex-col md:flex-row items-center gap-8 md:mr-7 mb-7 md:mb-0">
                {navLink.map((nav, i) => (
-                  <NavLink
-                     className={({ isActive }) =>
-                        isActive
-                           ? "md:text-yellow-cs text-black"
-                           : "cs-nav-link"
-                     }
+                  <NavHashLink
+                     onClick={() => setNavActive(true)}
+                     smooth
+                     activeClassName="nav-active"
+                     className={`cs-nav-link ${
+                        navActive ? "text-yellow-cs" : ""
+                     }`}
                      key={i}
                      to={nav.path}
                   >
                      {nav.name}
-                  </NavLink>
+                  </NavHashLink>
                ))}
             </div>
             <div className="flex flex-col md:flex-row gap-3 items-end md:items-center">

@@ -11,7 +11,10 @@ const Chefs = () => {
          .then((data) => setChefs(data));
    }, []);
    return (
-      <div className="bg-white py-28">
+      <div
+         id="chefs"
+         className="bg-white py-28"
+      >
          <h2 className="cs-title cs-title-border">Our Chefs</h2>
          <p className="text-xl text-center italic py-5 mx-auto md:w-[600px]">
             Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo

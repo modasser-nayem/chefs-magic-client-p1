@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BiRightArrowAlt, BiLike } from "react-icons/bi";
+import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ChefCart = ({ chef }) => {
@@ -41,9 +42,9 @@ const ChefCart = ({ chef }) => {
             </p>
             <Link
                to={`/recipes/${_id}`}
-               className="cs-btn py-2 text-lg text-center mt-5 block"
+               className="cs-btn py-2 text-lg mt-5 flex items-center gap-2 justify-center"
             >
-               View Recipes
+               View Recipes <FaEye />
             </Link>
          </div>
       </div>

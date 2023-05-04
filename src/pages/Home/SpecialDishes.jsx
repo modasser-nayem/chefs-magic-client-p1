@@ -9,7 +9,10 @@ const SpecialDishes = () => {
          .then((data) => setDishes(data.slice(0, 8)));
    }, []);
    return (
-      <div className="bg-white py-28">
+      <div
+         id="dishes"
+         className="bg-white py-28"
+      >
          <h2 className="cs-title cs-title-border">Special Dishes</h2>
          <p className="text-xl text-center italic py-5 mx-auto md:w-[600px]">
             Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo

@@ -2,10 +2,13 @@ import React from "react";
 import banner1 from "../../assets/banner/banner1.jfif";
 import banner2 from "../../assets/banner/banner2.jfif";
 import banner3 from "../../assets/banner/banner3.jfif";
+import { BsSearch } from "react-icons/bs";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { useState } from "react";
 
 const Banner = () => {
+   const [searchText, setSearchText] = useState("");
    const divStyle = {
       display: "flex",
       alignItems: "center",
@@ -51,11 +54,24 @@ const Banner = () => {
                   >
                      <div className="w-full h-full flex flex-col items-center justify-center bg-black bg-opacity-40 text-white">
                         <h3 className="text-3xl font-Montserrat">
-                           Hello everyone, How are you
+                           Hello everyone, Welcome our website
                         </h3>
-                        <p className="text-yellow-cs text-5xl font-extrabold font-kaushan">
-                           Restaurant of cafe
+                        <p className="text-yellow-cs text-5xl font-extrabold font-kaushan mt-3">
+                           American Chefs Magic Recipes
                         </p>
+                        <div className="form-control my-8 w-[400px]">
+                           <div className="input-group">
+                              <input
+                                 type="text"
+                                 placeholder="Search recipes"
+                                 className="input w-full input-bordered"
+                                 value={searchText}
+                              />
+                              <button className="cs-btn">
+                                 <BsSearch />
+                              </button>
+                           </div>
+                        </div>
                      </div>
                   </div>
                ))}

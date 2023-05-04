@@ -10,6 +10,9 @@
    .cs-nav-link {
       @apply md:hover:text-yellow-cs hover:text-black text-white md:text-black;
    }
+   .cs-nav-active {
+      @apply md:text-yellow-cs text-black;
+   }
    .cs-title {
       @apply text-5xl text-center font-bold font-kaushan;
    }
