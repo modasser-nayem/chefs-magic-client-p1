@@ -42,10 +42,16 @@ const Login = () => {
          });
       } else {
          loginCreatedUser(user.email, user.password)
-            .then((loginUser) => {
-               console.log(loginUser);
+            .then(() => {
                toast.success(user.success);
                navigate(fromRedirect);
+               setUser({
+                  ...user,
+                  email: "",
+                  password: "",
+                  emailError: "",
+                  passwordError: "",
+               });
             })
             .catch((error) => {
                toast.error(error.code.slice(5));

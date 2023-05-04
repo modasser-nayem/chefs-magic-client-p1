@@ -11,7 +11,6 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 export const authContext = createContext();
 
@@ -26,6 +25,7 @@ const AuthProvider = ({ children }) => {
       createUserWithEmailAndPassword(auth, email, password)
          .then((userCredentials) => {
             updateUserProfile(userCredentials.user, name, photo_url);
+            logoutUser("");
             toast.success("User Created Successfully");
             navigate("/login");
          })
@@ -53,10 +53,12 @@ const AuthProvider = ({ children }) => {
       return signInWithPopup(auth, githubProvider);
    };
 
-   const logoutUser = () => {
+   const logoutUser = (toastMessage) => {
       signOut(auth)
          .then(() => {
-            toast.success("sign out user");
+            if (toastMessage) {
+               toast.success(toastMessage);
+            }
          })
          .catch((error) => {
             console.log(error);
@@ -69,13 +71,14 @@ const AuthProvider = ({ children }) => {
       loginCreatedUser,
       loginWithGoogle,
       loginWithGithub,
+      updateUserProfile,
       logoutUser,
       loading,
    };
 
    useEffect(() => {
+      setLoading(true);
       const unsubscribe = onAuthStateChanged(auth, (ObserverUser) => {
-         console.log(ObserverUser);
          setUser(ObserverUser);
          setLoading(false);
       });

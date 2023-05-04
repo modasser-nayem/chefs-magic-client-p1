@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStarHalf } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 import ReactStars from "react-rating-stars-component";
 
 const DishCart = ({ dish }) => {
@@ -7,11 +8,13 @@ const DishCart = ({ dish }) => {
    return (
       <div className="border-t shadow-2xl rounded-md p-4">
          <div className="relative overflow-hidden hover:bg-black bg-transparent">
-            <img
-               className="dish-img w-full h-72 hover:scale-125 duration-200"
-               src={img}
-               alt={name}
-            />
+            <LazyLoad threshold={0.95}>
+               <img
+                  className="dish-img w-full h-72 hover:scale-125 duration-200"
+                  src={img}
+                  alt={name}
+               />
+            </LazyLoad>
             <div className="img-child absolute hover:block hidden top-0 w-full h-full bg-black bg-opacity-40 text-white">
                <p className="text-3xl">Hello</p>
             </div>

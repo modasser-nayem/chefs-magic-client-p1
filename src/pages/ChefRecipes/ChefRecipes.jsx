@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 import ChefRecipeHeader from "./ChefRecipeHeader";
 import RecipeCart from "../../components/RecipeCart";
 import Loading from "../../components/Loading";
-import { useState } from "react";
 
 const ChefRecipes = () => {
    const { chef, chefRecipes } = useLoaderData();

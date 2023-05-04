@@ -63,6 +63,16 @@ const Register = () => {
             user.photo_url,
             navigate
          );
+         setUser({
+            name: "",
+            email: "",
+            password: "",
+            photo_url: "",
+            nameError: "",
+            emailError: "",
+            passwordError: "",
+            photo_urlError: "",
+         });
       }
    };
    return (

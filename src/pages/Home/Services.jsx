@@ -33,7 +33,7 @@ const Services = () => {
          className="bg-gray-200 py-28"
       >
          <h2 className="cs-title cs-title-border">Our Services</h2>
-         <p className="text-xl text-center italic py-5 mx-auto md:w-[600px]">
+         <p className="text-xl text-center italic p-5 mx-auto md:w-[600px]">
             Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
             inventore veritatis et quasi architecto beatae
          </p>

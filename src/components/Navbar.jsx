@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import "./navActive.css";
 import logo from "../assets/logo/chef.png";
 import {
    MdOutlineShoppingCart,
@@ -12,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { authContext } from "../provider/authProvider";
 import { NavHashLink } from "react-router-hash-link";
-import { useRef } from "react";
+import LazyLoad from "react-lazy-load";
 
 const navLink = [
    {
@@ -40,9 +39,8 @@ const navLink = [
 const Navbar = () => {
    const [isOpen, setIsOpen] = useState(false);
    const { user, logoutUser, loading } = useContext(authContext);
-   const [navActive, setNavActive] = useState(false);
    return (
-      <div className="cs-container  top-0 navbar bg-white border-2 h-[12.5vh]">
+      <div className="cs-container sticky z-40 top-0 navbar bg-white border-2 h-[12.5vh]">
          <div className="flex-1">
             <Link
                className="flex items-center"
@@ -68,14 +66,11 @@ const Navbar = () => {
             <div className="text-lg font-medium font-Lato flex flex-col md:flex-row items-center gap-8 md:mr-7 mb-7 md:mb-0">
                {navLink.map((nav, i) => (
                   <NavHashLink
-                     onClick={() => setNavActive(true)}
                      smooth
-                     activeClassName="nav-active"
-                     className={`cs-nav-link ${
-                        navActive ? "text-yellow-cs" : ""
-                     }`}
+                     activeStyle={{ color: "red" }}
                      key={i}
                      to={nav.path}
+                     className="cs-nav-link"
                   >
                      {nav.name}
                   </NavHashLink>
@@ -98,10 +93,12 @@ const Navbar = () => {
                               className="btn btn-ghost btn-circle avatar"
                            >
                               <div className="w-12 rounded-full">
-                                 <img
-                                    className="bg-yellow-cs"
-                                    src={user.photoURL}
-                                 />
+                                 <LazyLoad threshold={0.95}>
+                                    <img
+                                       className="bg-yellow-cs"
+                                       src={user.photoURL}
+                                    />
+                                 </LazyLoad>
                               </div>
                            </label>
                            <ul
@@ -118,14 +115,17 @@ const Navbar = () => {
                                  </Link>
                               </li>
                               <li>
-                                 <p className="text-lg">
+                                 <Link
+                                    to="/update-profile"
+                                    className="text-lg"
+                                 >
                                     <FaUserEdit /> Update
-                                 </p>
+                                 </Link>
                               </li>
                               <li>
                                  <p
                                     className="text-lg"
-                                    onClick={() => logoutUser()}
+                                    onClick={() => logoutUser("sign out user")}
                                  >
                                     <MdLogout /> Logout
                                  </p>

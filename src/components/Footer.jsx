@@ -8,10 +8,18 @@ import {
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { BsSendFill } from "react-icons/bs";
-import imgtest from "../assets/errorimg.png";
+import { useEffect } from "react";
+import { server } from "../main";
+import { useState } from "react";
+import LazyLoad from "react-lazy-load";
 
 const Footer = () => {
-   const imgArr = [1, 2, 3, 4, 5, 6, 7, 8];
+   const [dishes, setDishes] = useState(null);
+   useEffect(() => {
+      fetch(`${server}/dishes`)
+         .then((res) => res.json())
+         .then((data) => setDishes(data.slice(0, 8)));
+   }, []);
    return (
       <div>
          <div className="cs-container bg-[#171616]  text-white">
@@ -104,14 +112,19 @@ const Footer = () => {
                      quidtiis praesetium ptatum mole deeniti.
                   </p>
                   <div className="flex gap-3 flex-wrap mt-5">
-                     {imgArr.map((im, i) => (
-                        <img
-                           className="w-16 rounded-sm"
-                           key={i}
-                           src={imgtest}
-                           alt="image"
-                        />
-                     ))}
+                     {dishes &&
+                        dishes.map((dish) => (
+                           <LazyLoad
+                              key={dish.id}
+                              threshold={0.95}
+                           >
+                              <img
+                                 className="w-16 hover:scale-110 duration-200 h-16 border-2 rounded-sm"
+                                 src={dish.img}
+                                 alt="image"
+                              />
+                           </LazyLoad>
+                        ))}
                   </div>
                </div>
             </div>

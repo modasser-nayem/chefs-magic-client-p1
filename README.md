@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# Chef's Magic <img src="/public/chef.png" width="100" height="100" />
+# Chef's Magic ![product-logo](/public/chefslogo.PNG)
 
 ### Live Demo: [https://chefs-magic.web.app/](https://chefs-magic.web.app/)
 
@@ -32,11 +32,12 @@ This project is create for American Chefs. The project here some chefs and detai
 
 ## Acknowledgments
 
--  [Daisy Ui](https://choosealicense.com)
--  [React Hot Toast](https://pages.github.com)
--  [React slideshow image](https://pages.github.com)
--  [React rating stars component](https://pages.github.com)
--  [React Icons](https://react-icons.github.io/react-icons/search)
+-  [Daisy Ui]
+-  [React Hot Toast]
+-  [React slideshow image]
+-  [React rating stars component]
+-  [React Icons]
+-  [React Lazy Loading]
 
 <!-- CONTACT -->
 

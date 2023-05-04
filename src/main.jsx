@@ -5,7 +5,8 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes/routes";
 import AuthProvider from "./provider/authProvider";
 
-export const server = "http://localhost:5000";
+export const server =
+   "https://chefsmagic-mdalimodassernayem-gmailcom.vercel.app/";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>

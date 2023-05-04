@@ -8,6 +8,8 @@ import Login from "../pages/Registration/Login";
 import Blogs from "../pages/Blogs/Blogs";
 import PrivateRoute from "./PrivateRoute";
 import { server } from "../main";
+import Profile from "../pages/Profile/Profile";
+import UpdateProfile from "../pages/Profile/UpdateProfile";
 
 const router = createBrowserRouter([
    {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
          },
          {
             path: "recipes/:id",
-            element: <ChefRecipes />,
+            element: (
+               <PrivateRoute>
+                  <ChefRecipes />
+               </PrivateRoute>
+            ),
             loader: ({ params }) => fetch(`${server}/chefs/${params.id}`),
          },
          {
@@ -34,9 +40,21 @@ const router = createBrowserRouter([
          },
          {
             path: "blog",
+            element: <Blogs />,
+         },
+         {
+            path: "profile",
             element: (
                <PrivateRoute>
-                  <Blogs />
+                  <Profile />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "update-profile",
+            element: (
+               <PrivateRoute>
+                  <UpdateProfile />
                </PrivateRoute>
             ),
          },

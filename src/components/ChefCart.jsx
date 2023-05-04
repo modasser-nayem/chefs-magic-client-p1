@@ -1,18 +1,20 @@
 import React from "react";
-import { AiFillLike } from "react-icons/ai";
 import { BiRightArrowAlt, BiLike } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazy-load";
 
 const ChefCart = ({ chef }) => {
    const { experience, likes, name, picture, recipes, _id } = chef;
    return (
       <div className="shadow-2xl p-5">
-         <img
-            className="w-44 h-44 rounded-full mx-auto"
-            src={picture}
-            alt={name}
-         />
+         <LazyLoad threshold={0.95}>
+            <img
+               className="w-44 h-44 rounded-full mx-auto"
+               src={picture}
+               alt={name}
+            />
+         </LazyLoad>
          <div className="mt-10 chef-cart-body">
             <h4 className="text-2xl text-gray-600 pb-3 font-semibold font-Montserrat">
                {name}

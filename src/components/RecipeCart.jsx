@@ -3,10 +3,10 @@ import { toast } from "react-hot-toast";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { FaStarHalf } from "react-icons/fa";
 import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
+import LazyLoad from "react-lazy-load";
 import ReactStars from "react-rating-stars-component";
 
 const RecipeCart = ({ recipe }) => {
-   console.log(recipe);
    const [favorite, setFavorite] = useState(false);
    const {
       title,
@@ -20,11 +20,13 @@ const RecipeCart = ({ recipe }) => {
    return (
       <div className="border-t shadow-2xl rounded-md p-4 md:p-8">
          <div className="overflow-hidden hover:bg-black bg-transparent">
-            <img
-               className="dish-img w-full h-72 hover:scale-125 duration-200"
-               src={picture}
-               alt={title}
-            />
+            <LazyLoad threshold={0.95}>
+               <img
+                  className="dish-img w-full h-72 hover:scale-125 duration-200"
+                  src={picture}
+                  alt={title}
+               />
+            </LazyLoad>
          </div>
          <div className="my-5 font-Lato">
             <p className="text-3xl font-Montserrat mb-5">{title}</p>

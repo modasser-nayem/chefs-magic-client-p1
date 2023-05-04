@@ -6,17 +6,20 @@ import {
    FaTwitter,
    FaYoutube,
 } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 
 const ChefRecipeHeader = ({ chef }) => {
-   const { description, experience, likes, name, picture, recipes, _id } = chef;
+   const { description, experience, likes, name, picture, recipes } = chef;
    return (
       <div className="pt-24 grid md:grid-cols-2 gap-10 md:gap-20">
          <div className="">
-            <img
-               className="w-full h-full"
-               src={picture}
-               alt=""
-            />
+            <LazyLoad threshold={0.95}>
+               <img
+                  className="w-full h-full"
+                  src={picture}
+                  alt=""
+               />
+            </LazyLoad>
          </div>
          <div className="">
             <h3 className="text-3xl font-bold font-kaushan">{name}</h3>
